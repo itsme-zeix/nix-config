@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   boot.initrd.availableKernelModules = [
     "ata_piix"
     "uhci_hcd"
@@ -12,4 +12,13 @@
   networking.useDHCP = true;
 
   services.qemuGuest.enable = true;
+  services.k3s = {
+    enable = true;
+    role = "server";
+  };
+
+  environment.systemPackages = with pkgs; [
+    kubectl
+    k9s
+  ];
 }

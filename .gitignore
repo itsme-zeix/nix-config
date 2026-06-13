@@ -1,0 +1,17 @@
+# macOS/editor metadata
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Local environment/secrets
+.env
+.env.*
+!.env.example
+
+# Nix build outputs
+result
+result-*
+
+# Logs
+*.log

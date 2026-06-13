@@ -6,18 +6,25 @@ Referenced https://git.notthebe.ee/notthebee/nix-config.
 
 # Installation Runbook
 
-From your host, copy the public SSH key to the server:
+Boot the official NixOS minimal installer ISO, then prepare temporary SSH from the Proxmox console:
 
 ```sh
-export NIXOS_HOST=192.168.2.xxx
-ssh-add ~/.ssh/id_ed25519
-ssh-copy-id -i ~/.ssh/id_ed25519.pub root@$NIXOS_HOST
+ip -br addr
+passwd nixos
 ```
 
-SSH into the host with agent forwarding enabled:
+From your host, SSH into the installer with agent forwarding enabled:
 
 ```sh
-ssh -A root@$NIXOS_HOST
+export NIXOS_HOST=192.168.xxx.xxx # replace as needed
+ssh-add ~/.ssh/id_ed25519
+ssh -A nixos@$NIXOS_HOST
+```
+
+Become root in the installer:
+
+```sh
+sudo -i
 ```
 
 Enable flakes:

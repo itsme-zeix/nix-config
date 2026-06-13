@@ -17,7 +17,7 @@
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
-      AllowUsers = "leyew";
+      AllowUsers = ["leyew"];
     };
   };
 

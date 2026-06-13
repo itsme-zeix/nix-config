@@ -83,8 +83,14 @@ Reboot:
 reboot
 ```
 
-After reboot, log in as `leyew`:
+After reboot, log in:
 
 ```sh
-ssh leyew@$NIXOS_HOST
+ssh -o IdentitiesOnly=yes -i ~/.ssh/id_ed25519 leyew@$NIXOS_HOST
+```
+
+Add PW for log in:
+
+```sh
+sudo passwd leyew
 ```

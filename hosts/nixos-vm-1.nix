@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   boot.initrd.availableKernelModules = [
     "ata_piix"
     "uhci_hcd"
@@ -15,10 +15,19 @@
   services.k3s = {
     enable = true;
     role = "server";
+
+    extraFlags = [
+      "--write-kubeconfig-mode=0640"
+      "--write-kubeconfig-group=wheel"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
     kubectl
     k9s
   ];
+
+  environment.sessionVariables = {
+    KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
+  };
 }

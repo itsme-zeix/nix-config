@@ -57,6 +57,7 @@
     git
     jq
     ripgrep
+    stow
     tree
 
     # editor
@@ -89,6 +90,12 @@
     claude-code
     codex
   ];
+
+  environment.shellAliases = {
+    ll = "ls -al";
+    dc = "docker compose";
+    rebuild = "sudo nixos-rebuild switch --flake";
+  };
 
   system.stateVersion = "26.05";
 }
